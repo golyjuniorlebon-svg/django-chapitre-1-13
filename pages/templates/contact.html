@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ page_title }}</h2>
+
+    <form method="post" action="{% url 'contact' %}">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <div style="margin-bottom: 15px;">
+            {{ form.name.label_tag }}<br>
+            {{ form.name }}
+            {% if form.name.help_text %}
+                <small style="color: grey; display: block;">{{ form.name.help_text }}</small>
+            {% endif %}
+            {% if form.name.errors %}
+                <div style="color: red; font-size: 0.9em;">{{ form.name.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            {{ form.email.label_tag }}<br>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <div style="color: red; font-size: 0.9em;">{{ form.email.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            {{ form.message.label_tag }}<br>
+            {{ form.message }}
+            {% if form.message.help_text %}
+                <small style="color: grey; display: block;">{{ form.message.help_text }}</small>
+            {% endif %}
+            {% if form.message.errors %}
+                <div style="color: red; font-size: 0.9em;">{{ form.message.errors }}</div>
+            {% endif %}
+        </div>
+
+        <button type="submit" style="padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Envoyer le Message
+        </button>
+    </form>
+{% endblock %}

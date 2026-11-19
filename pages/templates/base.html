@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon Site Django{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1>My website</h1>
+        <nav>
+            <a href="{% url 'home' %}">Accueil</a> |
+            <a href="{% url 'message_list' %}">Messages</a> |
+            <a href="{% url 'contact' %}">Contact</a> |
+            <a href="{% url 'blogapp:accueil' %}">Blog</a> |
+
+            {% if user.is_authenticated %}
+                <span style="margin-left: 20px;">Bonjour,
+                    <a href="{% url 'blogapp:profil_utilisateur' username=user.username %}"><strong>{{ user.username }}</strong></a> !
+                </span>
+                <a href="{% url 'blogapp:creer_article' %}" style="margin-left: 10px;">Nouvel article</a>
+                <a href="{% url 'password_change' %}" style="margin-left: 10px;">Changer mot de passe</a>
+                {# Django 5+ exige POST pour la déconnexion #}
+                <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="link-button">Déconnexion</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}" style="margin-left: 20px;">Connexion</a> |
+                <a href="{% url 'signup' %}">Inscription</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}
+            <p>Contenu par défaut si le bloc n'est pas défini dans l'enfant.</p>
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; {% now "Y" %} Mon Entreprise. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

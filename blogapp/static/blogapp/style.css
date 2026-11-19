@@ -1,0 +1,144 @@
+/* blogapp/static/blogapp/style.css
+   Styles propres au blog. Les règles globales (body, nav, formulaires)
+   sont déjà dans static/css/style.css du projet, donc non répétées ici. */
+
+/* Liste des articles */
+.article-list li {
+    list-style-type: none;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.article-list h3 a {
+    color: #2c3e50;
+}
+
+.article-meta {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+/* Détail d'un article */
+article h2 {
+    margin-bottom: 10px;
+}
+
+article em {
+    color: #7f8c8d;
+    font-size: 0.9em;
+    display: block;
+    margin-bottom: 20px;
+}
+
+article hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 4px;
+}
+
+/* Commentaires */
+#commentaires {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+#commentaires h3, #commentaires h4 {
+    margin-bottom: 15px;
+}
+
+.commentaire-item {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-top: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.commentaire-item p small {
+    font-size: 0.85em;
+    color: #777;
+}
+
+/* Page de profil */
+.profil-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.profil-header h1 {
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+.profil-header p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.profil-separator {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border: 0;
+    border-top: 1px dashed #ccc;
+}
+
+.profil-articles h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.pagination .step-links a,
+.pagination .step-links .disabled-link,
+.pagination .current-page {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 2px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.pagination .step-links a:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}
+
+.pagination .current-page {
+    font-weight: bold;
+    background-color: #3498db;
+    color: #fff;
+    border-color: #3498db;
+}
+
+.pagination .disabled-link {
+    color: #aaa;
+    pointer-events: none;
+    border-color: #eee;
+}

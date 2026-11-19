@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des Messages de Contact{% endblock %}
+
+{% block content %}
+    <h2>Messages de Contact Non Traités</h2>
+
+    {% if message_list %}
+        <ul>
+        {% for message in message_list %}
+            <li>
+                <strong>De :</strong>
+                {{ message.name }} ({{ message.email }})<br>
+                <strong>Reçu le :</strong>
+                {{ message.created_at|date:"d/m/Y H:i" }}<br>
+                <strong>Message :</strong><br>
+                <p style="margin-left: 20px;">
+                    {{ message.message|linebreaksbr }}
+                </p>
+            </li>
+            <hr>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun nouveau message de contact.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Accueil - Mon Site Django{% endblock %}
+
+{% block content %}
+    <h1>Bonjour, {{ nom_utilisateur|upper }} !</h1>
+    <p>Vous avez {{ age }} ans.</p>
+
+    {% if est_connecte %}
+        <p>Vous êtes connecté.</p>
+    {% else %}
+        <p>Veuillez vous connecter.</p>
+    {% endif %}
+
+    <h2>Vos {{ couleurs_preferees|length }} couleurs préférées :</h2>
+    <ul>
+        {% for couleur in couleurs_preferees %}
+            <li>{{ couleur }}</li>
+        {% empty %}
+            <li>Vous n'avez pas de couleurs préférées.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

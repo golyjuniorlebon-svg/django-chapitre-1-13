@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+    <h2>Connexion</h2>
+
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            Votre nom d'utilisateur et mot de passe ne correspondent pas. Veuillez réessayer.
+        </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+        <table>
+            {{ form.as_table }}
+            <tr>
+                <td>&nbsp;</td>
+                <td><button type="submit">Se connecter</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <p><a href="{% url 'password_reset' %}">Mot de passe oublié ?</a></p>
+    <p>Pas encore de compte ? <a href="{% url 'signup' %}">Inscrivez-vous ici</a>.</p>
+{% endblock %}

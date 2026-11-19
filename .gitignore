@@ -1,0 +1,12 @@
+# Environnement virtuel et caches Python
+env/
+venv/
+__pycache__/
+*.pyc
+
+# Base de données locale et fichiers collectés (ne pas versionner)
+db.sqlite3
+staticfiles/
+
+# Secrets : ne jamais versionner les clés
+.env
