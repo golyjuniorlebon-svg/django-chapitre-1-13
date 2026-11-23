@@ -2,5 +2,7 @@
 Django==6.1.3
 # Serveur d'application WSGI pour la production
 gunicorn>=23.0
+# Sert les fichiers statiques (CSS) en production, sans serveur web séparé
+whitenoise>=6.12.0
 # Pilote PostgreSQL (uniquement si la base de production est PostgreSQL)
 psycopg[binary]>=3.2
